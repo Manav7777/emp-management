@@ -1,0 +1,24 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text">
+        <div *ngIf="employeeForm.get('name').invalid && employeeForm.get('name').touched">
+            Name is required and must be a string.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="salary">Salary</label>
+        <input id="salary" formControlName="salary" type="number">
+        <div *ngIf="employeeForm.get('salary').invalid && employeeForm.get('salary').touched">
+            Salary is required.
+        </div>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="age">Age</label>
+        <input id="age" formControlName="age" type="number">
+        <div *ngIf="employeeForm.get('age').invalid && employeeForm.get('age').touched">
+            Age is required.
+        </div>
+    </div>
+    <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary">Submit</button>
+</form>
